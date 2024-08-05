@@ -1,6 +1,6 @@
 <?php
 
-namespace Sts\Contactus\Models;
+namespace avsr_sts\Contactus\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

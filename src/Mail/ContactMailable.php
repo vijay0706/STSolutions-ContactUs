@@ -1,6 +1,6 @@
 <?php
 
-namespace Sts\Contactus\Mail;
+namespace avsr_sts\Contactus\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Sts\Contactus\Mail;
+use avsr_sts\Contactus\Mail;
 use Illuminate\Mail\Markdown;
 
 

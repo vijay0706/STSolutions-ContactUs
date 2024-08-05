@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Sts\Contactus\Http\Controllers; 
+namespace avsr_sts\Contactus\Http\Controllers; 
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Sts\Contactus\Models\ContactUs;
-use Sts\Contactus\Mail\ContactMailable;
+use avsr_sts\Contactus\Models\ContactUs;
+use avsr_sts\Contactus\Mail\ContactMailable;
 use Illuminate\Support\facades\Mail;
 
 class ContactUsController extends Controller

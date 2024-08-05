@@ -1,17 +1,17 @@
 {
-    "name": "sts/contactus",
+    "name": "avsr_sts/contactus",
     "description": "sample pack",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Sts\\Contactus\\": "src/"
+            "avsr_sts\\Contactus\\": "src/"
         }
     },
     "extra": {
             "laravel": {
                 "providers": [
-                    "Sts\\Contactus\\ContactusServiceProvider"
+                    "avsr_sts\\Contactus\\ContactusServiceProvider"
                 ]
             }
         },
