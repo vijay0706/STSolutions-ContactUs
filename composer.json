@@ -1,0 +1,26 @@
+{
+    "name": "sts/contactus",
+    "description": "sample pack",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Sts\\Contactus\\": "src/"
+        }
+    },
+    "extra": {
+            "laravel": {
+                "providers": [
+                    "Sts\\Contactus\\ContactusServiceProvider"
+                ]
+            }
+        },
+    "authors": [
+        {
+            "name": "Akhil Vijay"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+    
+}
