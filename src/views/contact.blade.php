@@ -18,6 +18,7 @@
             margin: 0 auto;
             background-color: #ffffff;
             padding: 20px;
+            color: darkslategray;
             border-radius: 8px;
             box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
         }
