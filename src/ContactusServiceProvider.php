@@ -28,5 +28,3 @@ class ContactusServiceProvider extends ServiceProvider
         // Any binding or configuration can be done here
     }
 }
-
-

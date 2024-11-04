@@ -64,4 +64,26 @@
     <!-- Bootstrap JS (Optional, for Bootstrap features like dropdowns, modals, etc.) -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
+<script>
+    $.ajax({
+    type: 'POST',
+    url: '/contact-us/send',
+    data: {
+        name: $('#contact_name').val(),
+        email: $('#contact_email').val(),
+        message: $('#contact_message').val(),
+        _token: '{{ csrf_token() }}'
+    },
+    success: function(response) {
+        if (response.status === 'success') {
+            $('#successMessage').text(response.message).show(); // Display the message in a specified HTML element
+        }
+    },
+    error: function(xhr) {
+        console.log("Error submitting contact form:", xhr);
+    }
+});
+
+</script>
 </html>

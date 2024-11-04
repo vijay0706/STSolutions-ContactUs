@@ -23,7 +23,15 @@ class ContactUsController extends Controller
 
         ContactUs::create($request->all());
         
-        return redirect(route('contactus'));
+        // return redirect(route('contactus'));
+        $feeds = ContactUs::create($request->all());
+        $message;
+        if ($feeds->wasRecentlyCreated) {
+        $message = "Data created successfully";
+        } else {
+        $message = "Data updated successfully";
+        }
+        return view('contactus::ContactUsFeedback',compact('message'));
     }
 
 }
