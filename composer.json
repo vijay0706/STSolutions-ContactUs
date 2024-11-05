@@ -9,18 +9,17 @@
         }
     },
     "extra": {
-            "laravel": {
-                "providers": [
-                    "avsr_sts\\Contactus\\ContactusServiceProvider"
-                ]
-            }
-        },
-    "authors": [
-        {
-            "name": "Akhil Vijay"
+        "laravel": {
+            "providers": [
+                "avsr_sts\\Contactus\\ContactusServiceProvider"
+            ]
         }
-    ],
+    },
+    "authors": [{
+        "name": "Akhil Vijay"
+    }],
     "minimum-stability": "dev",
-    "require": {}
-    
+    "require": {},
+    "version": "v1.1.3"
+
 }
