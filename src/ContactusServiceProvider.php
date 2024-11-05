@@ -2,7 +2,6 @@
 
 namespace avsr_sts\Contactus;
 
-// use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;  
 
 class ContactusServiceProvider extends ServiceProvider

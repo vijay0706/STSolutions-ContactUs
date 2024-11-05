@@ -17,21 +17,18 @@ class ContactUsController extends Controller
         return view('contactus::contact');
     }
 
-    public function send(Request $request){
+    public function send(Request $request)
+        {
+        Mail::to(config('conf_contact.send_email_to'))->send(new ContactMailable($request->message, $request->name,
+        $request->email));
 
-        Mail::to(config('conf_contact.send_email_to'))->send(new ContactMailable($request->message, $request->name, $request->email));
-
-        ContactUs::create($request->all());
-        
-        // return redirect(route('contactus'));
         $feeds = ContactUs::create($request->all());
-        $message;
-        if ($feeds->wasRecentlyCreated) {
-        $message = "Data created successfully";
-        } else {
-        $message = "Data updated successfully";
-        }
-        return view('contactus::ContactUsFeedback',compact('message'));
+        $message = $feeds->wasRecentlyCreated ? "Thank you for contacting us! We will get back to you shortly." : "Message not send";
+
+        if ($request->ajax()) {
+            return response()->json(['status' => 'success', 'message' => $message]);
+        } 
     }
+
 
 }
