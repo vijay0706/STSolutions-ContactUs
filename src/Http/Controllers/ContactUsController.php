@@ -19,10 +19,18 @@ class ContactUsController extends Controller
 
     public function send(Request $request)
         {
-        Mail::to(config('conf_contact.send_email_to'))->send(new ContactMailable($request->message, $request->name,
-        $request->email));
+            
+            
+        Mail::to(config('conf_contact.send_email_to'))->send(new ContactMailable(
+            $request->avsrContct_u_msg,
+            $request->avsrContct_u_name,
+            $request->avsrContct_u_email));
 
-        $feeds = ContactUs::create($request->all());
+        $feeds = ContactUs::create([
+        'name' => $request->avsrContct_u_name,
+        'email' => $request->avsrContct_u_email,
+        'message' => $request->avsrContct_u_msg,
+        ]);
         $message = $feeds->wasRecentlyCreated ? "Thank you for contacting us! We will get back to you shortly." : "Message not send";
 
         if ($request->ajax()) {
