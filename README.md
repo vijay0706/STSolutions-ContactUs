@@ -18,8 +18,11 @@ A simple Contact Us form for customer queries. This package allows users to subm
 ## Installation
 To install this package, use the following steps:
 
-1. Clone the repository to your Laravel project
+1. Clone the repository to your Laravel project or use commmand
+
+    ```bash
+    composer require avsr_sts/contactus
 2. Publish the configuration and views:
 
    ```bash
-   php artisan vendor:publish --provider="AvsrSts\ContactUs\ContactUsServiceProvider"
+   php artisan vendor:publish --provider="avsrSts\ContactUs\ContactUsServiceProvider"
