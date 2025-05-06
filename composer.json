@@ -15,11 +15,12 @@
             ]
         }
     },
-    "authors": [{
-        "name": "Akhil Vijay | Sreejith P"
-    }],
+    "authors": [
+        {
+            "name": "Akhil Vijay | Sreejith P"
+        }
+    ],
     "minimum-stability": "dev",
     "require": {},
-    "version": "v2.1.0"
-
+    "version": "2.1.0"
 }
