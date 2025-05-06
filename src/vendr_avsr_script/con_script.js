@@ -35,7 +35,7 @@ $(document).ready(function () {
                     $('#contactMessage').css('background', '#cbffc6');
                     $('#contactMessage').css('color', '#1a8c27');
                     $('#contactMessage').css('display', 'inline-block');
-                    formData.reset();
+                    document.getElementById('avsr_form_contact').reset(); // Not on formData
                 }
             },
             error: async function (xhr) {
@@ -54,7 +54,7 @@ $(document).ready(function () {
                 $('.contactMessage').css('display', 'none');
                 $('#contactMessage').css('display', 'none');
                 console.log("Error submitting contact form:", xhr);
-                formData.reset();
+                document.getElementById('avsr_form_contact').reset(); // Not on formData
             },
             complete: async function (e) {
                 await new Promise(resolve => setTimeout(resolve, 3000));
