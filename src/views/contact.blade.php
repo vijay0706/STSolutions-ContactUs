@@ -7,7 +7,9 @@
     <title>Contact Form</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="vnd_avsr_styles/avsrcont.css">
-        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
      
@@ -21,7 +23,7 @@
         <h1 class="text-center mb-2">Contact Us</h1>
         <h5 class="text-muted text-center mb-4">!! We would like to hear from you</h5>
         <form  method="post" name="avsr_form_contact" id="avsr_form_contact">
-            @csrf
+            
             <div class="form-group">
                 <label for="avsrContct_u_name">Name</label>
                 <input type="text" class="form-control" id="avsrContct_u_name" name="avsrContct_u_name" required>
@@ -35,7 +37,10 @@
                 <textarea class="form-control" id="avsrContct_u_msg" name="avsrContct_u_msg" rows="5" required></textarea>
             </div>
             <div class="btn-holder">
-                <button type="button" id="sumb_message" class="btn btn-primary">Submit</button>
+                <button type="button" id="sumb_message" class="btn btn-primary">
+                <span class="btn-text">Send Message</span>
+                <i class="fas fa-spinner fa-spin spinner" style="display:none;"></i>
+                </button>
                 <button type="reset" class="btn btn-secondary ml-2">Reset</button>
             </div>
         </form>

@@ -11,10 +11,10 @@ $(document).ready(function () {
             return;
         }
         $('.contactMessage').css('display', 'block');
-        $('#avsr_loading').text('Please wait..');
-        $('#avsr_loading').css('display', 'inline-block');
+        $('#avsr_loading').text('Please wait..'); 
         let formData = new FormData(document.getElementById('avsr_form_contact'));
-        formData.append('_token', '{{ csrf_token() }}');
+        formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+
 
         $.ajax({
             type: 'POST',
@@ -22,6 +22,11 @@ $(document).ready(function () {
             data: formData,
             contentType: false, // Required for FormData usage in jQuery AJAX
             processData: false, // Required for FormData usage in jQuery AJAX
+            beforeSend: function () {
+                $('#sumb_message').attr('disabled', true).text('Sending...');
+                $('#sumb_message .spinner').show();
+                $('#avsr_loading').css('display', 'inline-block');
+            },
             success: function (response) {
                 if (response.status === 'success') {
                     $('#avsr_loading').text('');
@@ -30,32 +35,38 @@ $(document).ready(function () {
                     $('#contactMessage').css('background', '#cbffc6');
                     $('#contactMessage').css('color', '#1a8c27');
                     $('#contactMessage').css('display', 'inline-block');
-                    avsr_form_contact.reset();
+                    formData.reset();
                 }
             },
             error: async function (xhr) {
-                $('#avsr_loading').text('');
+                $('#avsr_loading').text('');    
                 $('#avsr_loading').css('display', 'none');
-                $('#contactMessage').text(response.message);
+                let message = 'Something went wrong. Please try again.';
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        message = xhr.responseJSON.message;
+                    } 
+                $('#contactMessage').text(message);
                 $('#contactMessage').css('background', '#ffc6c6');
                 $('#contactMessage').css('color', '#8c1a1a');
                 $('#contactMessage').css('display', 'inline-block');
-                await setTimeout(() => {
-                    $('.contactMessage').css('display', 'none');
-                    $('#contactMessage').css('display', 'none');
-                }, 3000);
+                await new Promise(resolve => setTimeout(resolve, 3000));
+
+                $('.contactMessage').css('display', 'none');
+                $('#contactMessage').css('display', 'none');
                 console.log("Error submitting contact form:", xhr);
+                formData.reset();
             },
             complete: async function (e) {
-
-                await setTimeout(() => {
-                    $('#avsr_loading').text('');
-                    $('#avsr_loading').css('display', 'none');
-                    $('.contactMessage').css('display', 'none');
-                    $('#contactMessage').css('display', 'none');
-                }, 3000);
-
+                await new Promise(resolve => setTimeout(resolve, 3000));
+            
+                $('#avsr_loading').text('');
+                $('#avsr_loading').css('display', 'none');
+                $('.contactMessage').css('display', 'none');
+                $('#contactMessage').css('display', 'none');
+                $('#sumb_message .spinner').hide();
+                $('#sumb_message').attr('disabled', false).text('Send Message');
             }
+            
         });
     });
 });

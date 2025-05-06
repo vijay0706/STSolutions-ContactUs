@@ -6,7 +6,7 @@ namespace avsr_sts\Contactus\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use avsr_sts\Contactus\Models\ContactUs;
-use avsr_sts\Contactus\Mail\ContactMailable;
+use avsr_sts\Contactus\Mail\ContactMailable; 
 use Illuminate\Support\facades\Mail;
 
 class ContactUsController extends Controller
@@ -31,11 +31,24 @@ class ContactUsController extends Controller
         'email' => $request->avsrContct_u_email,
         'message' => $request->avsrContct_u_msg,
         ]);
-        $message = $feeds->wasRecentlyCreated ? "Thank you for contacting us! We will get back to you shortly." : "Message not send";
-
+        if ($feeds->wasRecentlyCreated) {
+            $message = "Thank you for contacting us! We will get back to you shortly.";
+            $status = "success";
+        } else {
+            $message = "Message not sent. Please try again.";
+            $status = "error";
+        }
+    
+        
+        
+        
         if ($request->ajax()) {
-            return response()->json(['status' => 'success', 'message' => $message]);
-        } 
+            return response()->json([
+                'status' => $status,
+                'message' => $message
+            ]);
+        }
+
     }
 
 
