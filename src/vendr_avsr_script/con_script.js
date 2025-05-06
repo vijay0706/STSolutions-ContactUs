@@ -23,9 +23,11 @@ $(document).ready(function () {
             contentType: false, // Required for FormData usage in jQuery AJAX
             processData: false, // Required for FormData usage in jQuery AJAX
             beforeSend: function () {
-                $('#sumb_message').attr('disabled', true).text('Sending...');
+                $('#sumb_message').attr('disabled', true);
+                $('#sumb_message .btn-text').text('Sending...');
                 $('#sumb_message .spinner').show();
                 $('#avsr_loading').css('display', 'inline-block');
+
             },
             success: function (response) {
                 if (response.status === 'success') {
@@ -39,8 +41,7 @@ $(document).ready(function () {
                 }
             },
             error: async function (xhr) {
-                $('#avsr_loading').text('');    
-                $('#avsr_loading').css('display', 'none');
+                $('#avsr_loading').text('').css('display', 'none');
                 let message = 'Something went wrong. Please try again.';
                     if (xhr.responseJSON && xhr.responseJSON.message) {
                         message = xhr.responseJSON.message;
@@ -58,13 +59,13 @@ $(document).ready(function () {
             },
             complete: async function (e) {
                 await new Promise(resolve => setTimeout(resolve, 3000));
-            
-                $('#avsr_loading').text('');
-                $('#avsr_loading').css('display', 'none');
-                $('.contactMessage').css('display', 'none');
-                $('#contactMessage').css('display', 'none');
+
+                $('#avsr_loading').text('').css('display', 'none');
+                $('.contactMessage, #contactMessage').css('display', 'none');
                 $('#sumb_message .spinner').hide();
-                $('#sumb_message').attr('disabled', false).text('Send Message');
+                $('#sumb_message .btn-text').text('Send Message');
+                $('#sumb_message').attr('disabled', false);
+
             }
             
         });

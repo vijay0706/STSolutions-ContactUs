@@ -36,7 +36,7 @@
                 <label for="avsrContct_u_msg">Message</label>
                 <textarea class="form-control" id="avsrContct_u_msg" name="avsrContct_u_msg" rows="5" required></textarea>
             </div>
-            <div class="btn-holder">
+            <div class="btn-holder form-button-holder">
                 <button type="button" id="sumb_message" class="btn btn-primary">
                 <span class="btn-text">Send Message</span>
                 <i class="fas fa-spinner fa-spin spinner" style="display:none;"></i>

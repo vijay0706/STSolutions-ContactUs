@@ -67,6 +67,11 @@ body {
     color: #343e3e;
     animation: fadeInOut 3s ease-in-out infinite;
 }
+.form-button-holder button:disabled, button[disabled] {
+    border: 1px solid #5642dd !important;
+    background-color: #1236ca !important;
+    color: #fff !important;
+}
 
 @keyframes wiggle {
     0% {
